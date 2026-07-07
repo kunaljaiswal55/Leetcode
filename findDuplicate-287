@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n = nums.size();
+        int start = 0;
+        int end = n - 1;
+        while (start < end) {
+            int m = start + (end - start) / 2;
+            int c = 0;
+            for (int i : nums) {
+                if (i <= m) {
+                    c++;
+                }
+            }
+            if (c > m) {
+                end = m;
+            } else {
+                start = m + 1;
+            }
+        }
+        return start;
+    }
+};
